@@ -1,0 +1,30 @@
+{% csrf_token %}
+        <h1> Sign up </h1> 
+       
+        <p> 
+            <label for="{{ user_form.username.id_for_label }}" class="uname" data-icon="u">Your username</label>
+            {{ user_form.username }}
+            <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
+        </p>
+        <p> 
+            <label for="{{ user_form.email.id_for_label }}" class="youmail" data-icon="e" > Your email</label>
+            {{ user_form.email }}
+            <!--<input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> -->
+        </p>
+        <p> 
+            <label for="{{ user_form.password.id_for_label }}" class="youpasswd" data-icon="p">Your password </label>
+            {{ user_form.password}}
+            <!--<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>-->
+        </p>
+        <p> 
+            <label for="{{ user_form.confirmpassword.id_for_label }}" class="youpasswd" data-icon="p">Please confirm your password </label>
+            {{ user_form.confirmpassword }}
+            <!--<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>-->
+        </p>
+        <p class="signin button"> 
+            <input type="submit" value="Sign up"/> 
+        </p>
+        <p class="change_link">  
+            Already a member ?
+            <a href="login" class="to_register"> Go and log in </a>
+        </p>
