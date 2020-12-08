@@ -19,8 +19,52 @@
         <link rel="stylesheet" type="text/css" href={% static 'css/animate-custom.css' %} />
     </head>
     <body>
+        <!-- -->
+        <div class='header-container'>
+            <a href='http://www.manit.ac.in/'  class='header'>
+                <img class='logo' src={% static 'images/manitlogo.png' %} alt='manit.ac.in' />
+                <div class='title'>
+                    <div class='innertitle'>
+                        MAULANA AZAD NATIONAL INSTITUTE OF TECHNOLOGY
+                    </div>
+                    URL Content Fetch System
+                </div>
+            </a>
+            <div class='nav'>
+
+                <a href={% url 'index' %} class='nav-btn'>
+                    Home
+                </a>
+                {% if user.is_authenticated %}
+                <a href={% url 'fetch' %} class='nav-btn'>
+                    Fetch
+            </a>
+                <a href={% url 'logout' %} class='nav-btn'>
+                    Logout
+            </a>
+                {% else %}
+                <a href={% url 'register' %} class='nav-btn'>
+                        Register
+                </a>
+                <a href={% url 'login' %} class='nav-btn'>
+                        Login
+                </a>
+                {% endif %}
+            </div>
+        </div> 
         <div class="container">
-            
+            <div class="codrops-top">
+                
+                <!-- <a href="">
+                    <strong>&laquo; Previous Demo: </strong>Responsive Content Navigator
+                </a>
+                <span class="right">
+                    <a href=" http://tympanus.net/codrops/2012/03/27/login-and-registration-form-with-html5-and-css3/">
+                        <strong>Back to the Codrops Article</strong>
+                    </a>
+                </span>
+                <div class="clr"></div> -->
+            </div><!--/ Codrops top bar -->
             {% block body_block %}
             {% endblock %}
             

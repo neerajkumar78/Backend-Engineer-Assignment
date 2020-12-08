@@ -49,9 +49,10 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 /* General Demo Style */
+/*Neeraj*/
 body{
 	font-family: Cambria, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
-	background: #fff url(../images/bg.jpg) repeat top left;
+		background: #fff url(../images/bg.jpg) repeat top left;
 	font-weight: 400;
 	font-size: 15px;
 	color: #1d3c41;
@@ -61,7 +62,65 @@ a{
 	color: #333;
 	text-decoration: none;
 }
+.header-container{
+    display: flex;
+    position: fixed;
+    top: 0px;   
+    flex-direction: row;
+    background: #089f98;
+    color: white;
+    width: 100vw;
+    z-index: 1;
+}
+.header{
+    justify-self: start;
+    flex-grow: 4;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: white;
+}
+.nav{
+    justify-self: end;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+.title{
+    padding: 10px;
+    padding-top: 15px;  
+    font-size: 2.5em;
+}
+.innertitle{
+    font-size : 50%;
+}
+.logo{
+    width: 70px;
+    height: 80px;
+    margin: 10px;
+    transition: all .5s linear;
+}
+.logo:hover{
+    transform : scale(1.1);
+}
+.nav-btn{
+    margin: 1vw;
+    margin-right: 2vw;
+    padding: 1.5vw;
+    font-size: 1.1em;
+    border-radius: 20%;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+.nav-btn:hover{
+    background: rgba(255,255,255,.8);
+    color: #089f98;
+}
 .container{
+	padding: 180px 0px;
 	width: 100%;
 	height: 100%;
 	position: relative;

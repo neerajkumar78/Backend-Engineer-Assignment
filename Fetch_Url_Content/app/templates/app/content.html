@@ -1,0 +1,30 @@
+{% extends "app/base.html" %}
+
+{% block body_block %}
+ 
+<section>				
+    <div id="container_demo" >
+     
+        <div id="wrapper">
+           
+        
+        <h1> Fetch URL Content </h1>
+        <p> 
+           
+            <textarea id="url" name="url" rows="35" cols="100" style="overflow-x: scroll;overflow-y: scroll;">{{data}} </textarea>
+        </p>
+        
+
+{% endblock %}
+</div>
+</div>  
+</section>
+
+
+
+
+{% if user.is_authenticated %}
+hello
+{% else %}
+bye
+{% endif %}

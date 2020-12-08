@@ -1,14 +1,17 @@
 from django.shortcuts import render
-from app.forms import UserForm
+from app.forms import UserForm, URLForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from .function import get_content
+import urllib.request
+from .models import Content
+from django.db.models import Q
+from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
     return render(request,'app/index.html')
-def fetch(request):
-    return render(request,'app/fetch.html')
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -21,6 +24,7 @@ def register(request):
             #user.is_active = False#+
             user.save()
             registered = True
+            return render(request, 'app/login.html', {})
         else:
             print(user_form.errors)
     else:
@@ -37,8 +41,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                print("hello")
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('fetch'))
             else:
                 return HttpResponse("Your account was inactive.")
         else:
@@ -55,3 +58,40 @@ def special(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+def fetch(request):
+    print("gcghcg")
+    if request.method == 'POST':
+        print("inside request post")
+        url_form=URLForm(data=request.POST)
+        if url_form.is_valid():
+            url=request.POST.get("url")
+            content=Content.objects.filter(Q(url=url)&Q(username=request.user)).values()
+            print(len(content))
+            if(len(content)==0):
+                print("inside validity")
+                url_obj=url_form.save(commit=True)
+                print(request.POST.get("url"))
+                print("hello")
+                data = get_content(url)
+                url_obj.username.add(request.user)
+                url_obj.response=data
+                url_obj.save()
+                return render(request, "app/content.html",{'data':data})
+            else:
+                #for f in content:
+                #    print(f['response'])
+                data=content[0]['response']
+                return render(request, "app/content.html",{'data':data})
+
+                #data=content.url
+                #return render(request, "app/content.html",{'data':data})
+        else:
+            print(url_form.errors)
+    else:
+        url_form = URLForm()
+        print("ncgxx")
+    print("out")
+    return render(request,'app/fetch.html',
+                          {'url_form':url_form})
+def content(request):
+    return render(request,'app/fetch.html')

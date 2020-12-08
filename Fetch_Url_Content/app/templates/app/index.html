@@ -1,39 +1,134 @@
-{% extends "app/base.html" %}
-{% block body_block %}
-<section>				
-    <div id="container_demo" >
-     
-        <div id="wrapper">
-<div id="login" class="animate form">
-    <form  action="mysuperscript.php" autocomplete="on" method="POST"> 
-      
-        <h1>Log in</h1> 
-        <p> 
-            <label for="username" class="uname" data-icon="u" > Your email or username </label>
-           
-            <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/> 
-        </p>
-        <p> 
-            <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-           
-            <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
-        </p>
-        <p class="keeplogin"> 
-           
-            <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-            <label for="loginkeeping">Keep me logged in</label>
-        </p>
-        <p class="login button"> 
-            <input type="submit" value="Login" /> 
-        </p>
-        <p class="change_link">
-            Not a member yet ?
-            <a href="register" class="to_register">Join us</a>
-        </p>
-    </form>
-</div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>URL Content Fetch System</title>
+    <link rel='icon' href={% static 'images/manitlogo3.jpg' %}>
+    <link rel='stylesheet' type='text/css' href={% static 'css/basic.css' %}/>
+    <link rel='stylesheet' type='text/css' href={% static 'css/modal.css' %} />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"/>
+</head>
+<body>
+    <div class='header-container'>
+        <a href='http://www.manit.ac.in/'  class='header'>
+            <img class='logo' src={% static 'images/manitlogo.png' %} alt='manit.ac.in' />
+            <div class='title'>
+                <div class='innertitle'>
+                    MAULANA AZAD NATIONAL INSTITUTE OF TECHNOLOGY
+                </div>
+                URL Content Fetch System
+            </div>
+        </a>
+        <div class='nav'>
+            <a href='#home' class='nav-btn'>
+                Home
+            </a>
+            {% if user.is_authenticated %}
+            <a href='#login' class='nav-btn'>
+                Fetch
+        </a>
+            <a href='#login' class='nav-btn'>
+                Logout
+        </a>
+        {% else %}
+            <a href='#register' class='nav-btn'>
+                    Register
+            </a>
+            <a href='#login' class='nav-btn'>
+                    Login
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    <div id='home'></div>
+    <div class='workSpace'>
+        <img class ='manitBuilding' src={% static '/images/manitBuilding.jpg' %} alt='Manit Building' />
+        <div class='introduction'>
+            <div>
+                <h1>Introduction</h1>
+            </div>
+            <div id='register'></div>
+            <div class='intro-content'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aperiam quaerat a, accusantium, vel repellendus corrupti tempore similique esse blanditiis doloribus neque. Possimus iure, culpa debitis iste quibusdam qui veritatis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aperiam quaerat a, accusantium, vel repellendus corrupti tempore similique esse blanditiis doloribus neque. Possimus iure, culpa debitis iste quibusdam qui veritatis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aperiam quaerat a, accusantium, vel repellendus corrupti tempore similique esse blanditiis doloribus neque. Possimus iure, culpa debitis iste quibusdam qui veritatis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aperiam quaerat a, accusantium, vel repellendus corrupti tempore similique esse blanditiis doloribus neque. Possimus iure, culpa debitis iste quibusdam qui veritatis!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aperiam quaerat a, accusantium, vel repellendus corrupti tempore similique esse blanditiis doloribus neque. Possimus iure, culpa debitis iste quibusdam qui veritatis!
+            </div>
+        </div>
+        
+       
+        {% if not user.is_authenticated %}
 
-{% endblock %}
-</div>
-</div>  
-</section>
+        <!-- Student Registration button -->
+        <div class='register'>
+            <div>
+                <h1>Student Registeration</h1>
+            </div>
+            <div class='btn register-btn' onclick="location.href='{% url 'register' %}'">
+                <i class="fas fa-user-circle"><div>User Registration</div></i>
+            </div>
+        </div>   
+        <!-- Login Section -->
+        <div class='login'>
+            <div>
+                <h1 id='login'>Login Section</h1>
+            </div>
+            <div class='login-btn-container'>
+                <!-- Student login button -->
+
+                <div class='login-btn' onclick="location.href='{% url 'login' %}'">
+                    <i class="fas fa-user-circle"><div>User Login</div></i>
+                </div>
+                
+                <!-- Admin Login button -->
+                <div class='login-btn' onclick="window.open('{% url 'admin:index' %}','_blank')">
+                    <i class="fas fa-user-circle"><div>Admin's Login</div></i>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class='login'>
+            <div>
+                <h1 id='login'>Section</h1>
+            </div>
+            <div class='login-btn-container'>
+                <!-- Student login button -->
+
+               
+                
+                
+                <div class='fetch-btn' onclick="window.open('{% url 'fetch' %}','_blank')">
+                    <i class="fas fa-user-circle"><div>Fetch</div></i>
+                </div>
+                <div class='logout-btn' onclick="location.href='{% url 'logout' %}'">
+                    <i class="fas fa-user-circle"><div>Logout</div></i>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class='top-container'>
+    <footer>
+        <div class='socialMedia'>
+                <a href=""> <div class="fab fa-facebook-square media" padding='10px'></div></a>
+                <a href=""><div class="fab fa-instagram media" padding='10px'></div></a>
+                <a href=""><div class="fab fa-google media" padding='10px'></div></a>
+        </div>
+        <div class='copyright'>
+                2019 All Rights Reserved Terms of Use and Privacy Policy
+        </div>
+    </footer> 
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script> 
+</body>
+</html>
