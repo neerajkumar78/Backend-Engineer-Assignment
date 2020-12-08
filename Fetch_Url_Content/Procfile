@@ -1,1 +1,1 @@
-web: gunicorn Fetch_Url_Content.wsgi
+web: gunicorn Fetch_Url_Content.wsgi --log-file -
