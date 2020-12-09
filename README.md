@@ -1,7 +1,10 @@
 # Backend-Engineer-Assignment
+Front End Technologies: Html, CSS, JavaScript.<br/>
+Server Side Technologies: Python + Django.<br/>
 <b>Project Tree Structure</b><br/>
 ![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/tree1.png)<br/>
-![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/tree2.png)<br/><br/>
+![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/tree2.png)<br/>
+If you want to get general information about django project then <a href='https://django-project-skeleton.readthedocs.io/en/latest/structure.html'>Click Here</a><br/><br/>
 <b>Workflow</b><br/>
 <pre>
 Step 1: Visit Website (Ctrl+click) <a href='https://url-content-fetch-system.herokuapp.com/' target='_blank'><u>https://url-content-fetch-system.herokuapp.com/</u></a><br/>
