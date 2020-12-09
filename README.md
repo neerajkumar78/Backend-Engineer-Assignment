@@ -1,5 +1,7 @@
 # Backend-Engineer-Assignment
-
+<b>Project Tree Structure</b><br/>
+![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/tree1.png)<br/>
+![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/tree2.png)<br/><br/>
 <b>Workflow</b><br/>
 <pre>
 Step 1: Visit Website (Ctrl+click) <a href='https://url-content-fetch-system.herokuapp.com/' target='_blank'><u>https://url-content-fetch-system.herokuapp.com/</u></a><br/>
