@@ -2,11 +2,11 @@
 
 <b>Workflow</b><br/>
 <pre>
-Step 1: Visit Website <a href='https://url-content-fetch-system.herokuapp.com/'><u>https://url-content-fetch-system.herokuapp.com/</u></a><br/>
+Step 1: Visit Website <a href='https://url-content-fetch-system.herokuapp.com/' target='_blank'><u>https://url-content-fetch-system.herokuapp.com/</u></a><br/>
         You Will see the home page as follows:<br/></pre>
 ![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/introduction.png)<br/><br/>
 <pre>
-Step 2: If you are a new user then click on register button. If you don't want to do that and want to login directly by using dummy username and password then goto step 7.</pre>
+Step 2: If you are a new user then click on register button. If you don't want to do that and want to login directly by using dummy username and password then goto step 5.</pre>
 ![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/clickregister.png)<br/><br/>
 <pre>
 Step 3: Now click on user register.<br/></pre>
