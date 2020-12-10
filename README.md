@@ -27,7 +27,8 @@ Step 6: Click on user login.<br/></pre>
 ![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/clicklogin2.png)<br/><br/>
 <pre>
 Step 7:Enter your username and password and click on login.<br/>
-<i>Note: If you are not registered then you can use <b>xyz</b> as username and <b>1234</b> as password</i>.<br/><br/></pre>
+<i>Note:For User: If you are not registered then you can use <b>xyz</b> as username and <b>1234</b> as password</i>.<br/>
+<i>Note:For Admin: If you are not registered then you can use <b>admin</b> as username and <b>manit@123</b> as password</i>.<br/><br/></pre>
 ![img](https://github.com/neerajkumar78/Backend-Engineer-Assignment/blob/master/Fetch_Url_Content/app/static/app/images/login.png)<br/><br/>
 <pre>
 Step 8: Enter your url.<br/></pre>
