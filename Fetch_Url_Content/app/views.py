@@ -14,28 +14,33 @@ def index(request):
     return render(request,'app/index.html')
 def register(request):
     registered = False
+    message=None
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)      
         if user_form.is_valid():
             user = user_form.save()
-            print("hellore")
-            #user.username=user_form.username
+            print("user form is valid")
             user.set_password(user.password)
-            #user.is_active = False#+
             user.save()
             registered = True
             return render(request, 'app/login.html', {})
         else:
-            print(user_form.errors)
+            username = request.POST.get('username')
+            try:
+                user = User.objects.exclude(pk=request.user.pk).get(username=username)
+                message='username already exists'
+            except User.DoesNotExist:
+                print(user_form.errors)
+            
     else:
         user_form = UserForm()
     return render(request,'app/register.html',
                           {'user_form':user_form,
-                           'registered':registered})
+                           'registered':registered, 'message': message})
 def user_login(request):
+    message=None
     if request.method == 'POST':
         username = request.POST.get('username')
-   
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user:
@@ -47,9 +52,10 @@ def user_login(request):
         else:
             print("Someone tried to login and failed.")
             print("They used username: {} and password: {}".format(username,password))
-            return HttpResponse("Invalid login details given")
+            message='username or password does not exists'
+            return render(request, 'app/login.html', {'message':message})
     else:
-        return render(request, 'app/login.html', {})
+        return render(request, 'app/login.html', {'message':message})
 
 @login_required
 def special(request):
@@ -59,39 +65,34 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 def fetch(request):
-    print("gcghcg")
+    print("inside fetch")
+    message=None
     if request.method == 'POST':
-        print("inside request post")
+        print("inside fetch request post")
         url_form=URLForm(data=request.POST)
         if url_form.is_valid():
             url=request.POST.get("url")
             content=Content.objects.filter(Q(url=url)&Q(username=request.user)).values()
-            print(len(content))
             if(len(content)==0):
-                print("inside validity")
+                print("inside fetch validity")
                 url_obj=url_form.save(commit=True)
-                print(request.POST.get("url"))
-                print("hello")
                 data = get_content(url)
-                url_obj.username.add(request.user)
-                url_obj.response=data
-                url_obj.save()
-                return render(request, "app/content.html",{'data':data})
+                if(data):
+                    url_obj.username.add(request.user)
+                    url_obj.response=data
+                    url_obj.save()
+                    return render(request, "app/content.html",{'data':data})
+                else:
+                    message='something went wrong, either check your internet connectivity or enter a valid url'
+                
             else:
-                #for f in content:
-                #    print(f['response'])
                 data=content[0]['response']
                 return render(request, "app/content.html",{'data':data})
-
-                #data=content.url
-                #return render(request, "app/content.html",{'data':data})
         else:
             print(url_form.errors)
     else:
         url_form = URLForm()
-        print("ncgxx")
-    print("out")
     return render(request,'app/fetch.html',
-                          {'url_form':url_form})
+                          {'url_form':url_form, 'message':message})
 def content(request):
     return render(request,'app/fetch.html')

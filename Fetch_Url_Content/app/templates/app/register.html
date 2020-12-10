@@ -1,12 +1,45 @@
 {% extends "app/base.html" %}
 {% block body_block %}
+<script>
+    var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+  }
+}
+function checkPassword(form) { 
+				password1 = form.password.value; 
+				password2 = form.confirm_password.value; 
+
+				// If password not entered 
+				if (password1 == '') 
+					alert ("Please enter Password"); 
+					
+				// If confirm password not entered 
+				else if (password2 == '') 
+					alert ("Please enter confirm password"); 
+					
+				// If Not same return False.	 
+				else if (password1 != password2) { 
+					alert ("\nPassword did not match: Please try again...") 
+					return false; 
+				} 
+
+				// If same return True. 
+				return true; 
+			} 
+</script>
 <section>				
     <div id="container_demo" >
      
         <div id="wrapper">
             
 <div id="login" class="animate form">
-    <form  action="" autocomplete="on" method="POST"> 
+    <form  action="" autocomplete="on" method="POST" onSubmit = "return checkPassword(this)"> 
         {% csrf_token %}
         
         <h1> Sign up </h1> 
@@ -14,6 +47,9 @@
         <p> 
             <label for="{{ user_form.username.id_for_label }}" class="uname" data-icon="u">Your username</label>
             {{ user_form.username }}
+            {% if message %}
+            <script>alert('{{message}}')</script>    
+            {% endif %}
             <!--<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />-->
         </p>
         
@@ -26,6 +62,9 @@
             <label for="{{ user_form.confirmpassword.id_for_label }}" class="youpasswd" data-icon="p">Please confirm your password </label>
             {{ user_form.confirmpassword }}
             <!--<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>-->
+        </p>
+        <p>
+            <span id='message'></span>
         </p>
         <p class="signin button"> 
             <input type="submit" value="Sign up"/> 

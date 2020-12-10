@@ -1,5 +1,8 @@
 {% extends "app/base.html" %}
 {% block body_block %}
+{% if message %}
+<script>alert('{{message}}')</script>    
+{% endif %}
 <section>				
     <div id="container_demo" >
      

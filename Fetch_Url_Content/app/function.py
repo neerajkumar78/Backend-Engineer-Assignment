@@ -16,10 +16,13 @@ def text_from_html(body):
     return u" ".join(t.strip() for t in visible_texts)
 
 def get_content(url):
-    webUrl = urllib.request.urlopen(url)
-    if(webUrl.getcode()==200):
-        data=text_from_html(webUrl)
-        return data
-    else:
-        return False
+    try:
+        webUrl = urllib.request.urlopen(url)
+        if(webUrl.getcode()==200):
+            data=text_from_html(webUrl)
+            return data
+        else:
+            return None
+    except Exception:
+        return None
 
