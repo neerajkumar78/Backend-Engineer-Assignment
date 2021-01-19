@@ -7,7 +7,7 @@ Server Side Technologies: Python + Django.<br/>
 If you want to get general information about django project then <a href='https://django-project-skeleton.readthedocs.io/en/latest/structure.html'>Click Here</a><br/><br/>
 <b>Workflow</b><br/>
 <pre>
-Step 1: Visit Website (Ctrl+click) <a href='https://url-content-fetch-system.herokuapp.com/' target='_blank'><u>https://url-content-fetch-system.herokuapp.com/</u></a><br/>
+Step 1: Visit Website of this project (Ctrl+click) <a href='https://url-content-fetch-system.herokuapp.com/' target='_blank'><u>https://url-content-fetch-system.herokuapp.com/</u></a><br/>
         For dummy username and password go below at Step 7<br/>
         You Will see the home page as follows:<br/>
         </pre>
